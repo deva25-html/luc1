@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emperion Wiki</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      .wiki-section {
+        display: flex;
+        align-items: flex-start;
+        gap: 2rem;
+        background: var(--glass-bg, rgba(30, 42, 62, 0.45));
+        border-radius: 1rem;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+        margin: 2rem 0;
+        padding: 2rem;
+        backdrop-filter: blur(6px);
+      }
+      .wiki-img {
+        flex: 0 0 220px;
+        max-width: 220px;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+        background: #222;
+      }
+      .wiki-img img {
+        width: 100%;
+        display: block;
+        border-radius: 1rem;
+        transition: transform 0.4s;
+      }
+      .wiki-img img:hover {
+        transform: scale(1.07) rotate(-2deg);
+      }
+      .wiki-content {
+        flex: 1;
+      }
+      .wiki-title {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: var(--primary, #5b82b6);
+      }
+      @media (max-width: 768px) {
+        .wiki-section {
+          flex-direction: column;
+          align-items: stretch;
+          padding: 1rem;
+        }
+        .wiki-img {
+          max-width: 100%;
+          margin-bottom: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar, tempel di index.html, wiki.html, dst -->
+    <nav class="navbar">
+      <a href="index.html" class="navbar-logo"
+        >Emperion<span>Community</span>.</a
+      >
+      <div class="navbar-nav">
+        <a href="index.html">Home</a>
+        <a href="wiki.html">Wiki</a>
+        <a href="#about">Tentang Kami</a>
+        <a href="#event">Kegiatan</a>
+        <a href="#contact">Kontak</a>
+      </div>
+      <div class="navbar-extra">
+        <a href="#" id="menu"><i data-feather="menu"></i></a>
+      </div>
+    </nav>
+
+    <main class="container">
+      <h1 class="section-title"><span>Wiki</span> Emperion</h1>
+
+      <section class="wiki-hero" id="wiki-home">
+        <div class="container">
+          <div class="wiki-hero-content" data-aos="fade-up">
+            <h1>Emperion <span>Wiki</span></h1>
+            <p>
+              Selamat datang di pusat pengetahuan komunitas Emperion!<br />
+              Temukan info karakter, sejarah, event, dan segala hal menarik
+              seputar dunia Emperion di sini.
+            </p>
+            <a href="#wiki-list" class="btn">Jelajahi Wiki</a>
+          </div>
+          <div class="wiki-hero-img" data-aos="fade-left">
+            <img src="img/wiki-figure.gif" alt="Wiki Emperion" />
+          </div>
+        </div>
+      </section>
+
+      <section class="wiki-section">
+        <div class="wiki-img">
+          <img src="img/karakter/karakter 1.jpg" alt="Karakter 1" />
+        </div>
+        <div class="wiki-content">
+          <h2 class="wiki-title">Karakter: Luci</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <ul>
+            <li>Role: MIX</li>
+            <li>Skill: -</li>
+            <li>Fun Fact: -</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="wiki-section">
+        <div class="wiki-img">
+          <img src="img/karakter/karakter 2.jpg" alt="Karakter 2" />
+        </div>
+        <div class="wiki-content">
+          <h2 class="wiki-title">Karakter: Louw</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <ul>
+            <li>Role: Healer</li>
+            <li>Skill: -</li>
+            <li>Fun Fact: -</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="wiki-section">
+        <div class="wiki-img">
+          <img src="img/karakter/karakter 3.jpg" alt="Karakter 2" />
+        </div>
+        <div class="wiki-content">
+          <h2 class="wiki-title">Karakter: Zeon</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <ul>
+            <li>Role: Defender</li>
+            <li>Skill: -</li>
+            <li>Fun Fact: -</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="wiki-section">
+        <div class="wiki-img">
+          <img src="img/karakter/karakter 4.jpg" alt="Karakter 2" />
+        </div>
+        <div class="wiki-content">
+          <h2 class="wiki-title">Karakter: Nae</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <ul>
+            <li>Role: MIX</li>
+            <li>Skill: -</li>
+            <li>Fun Fact: -</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="wiki-section">
+        <div class="wiki-img">
+          <img src="img/karakter/karakter 5.jpg" alt="Karakter 2" />
+        </div>
+        <div class="wiki-content">
+          <h2 class="wiki-title">Karakter: Kay</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <ul>
+            <li>Role: Helper</li>
+            <li>Skill: -</li>
+            <li>Fun Fact: -</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="wiki-section">
+        <div class="wiki-img">
+          <img src="img/karakter/karakter 6.jpg" alt="Karakter 2" />
+        </div>
+        <div class="wiki-content">
+          <h2 class="wiki-title">Karakter: Azel</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <ul>
+            <li>Role: Attacker</li>
+            <li>Skill: -</li>
+            <li>Fun Fact: -</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="wiki-section">
+        <div class="wiki-img">
+          <img src="img/karakter/karakter 7.jpg" alt="Karakter 2" />
+        </div>
+        <div class="wiki-content">
+          <h2 class="wiki-title">Karakter: Noe</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <ul>
+            <li>Role: Attacker</li>
+            <li>Skill: -</li>
+            <li>Fun Fact: -</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="wiki-section">
+        <div class="wiki-img">
+          <img src="img/karakter/karakter 8.jpg" alt="Karakter 2" />
+        </div>
+        <div class="wiki-content">
+          <h2 class="wiki-title">Karakter: Annonymous L</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <ul>
+            <li>Role: Anti-hero</li>
+            <li>Skill: -</li>
+            <li>Fun Fact: -</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Tambahkan section wiki lain sesuai kebutuhan -->
+    </main>
+
+    <!-- footer start -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="social-links">
+            <a href="#"><i data-feather="instagram"></i></a>
+            <a href="#"><i data-feather="twitter"></i></a>
+            <a href="#"><i data-feather="facebook"></i></a>
+            <a href="#"><i data-feather="youtube"></i></a>
+            <a href="#"
+              ><img
+                height="32"
+                width="32"
+                src="https://cdn.simpleicons.org/discord/white"
+            /></a>
+          </div>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="#">FAQ</a>
+            <a href="#">Syarat & Ketentuan</a>
+          </div>
+          <div class="copyright">
+            &copy; 2023 Emperion Community. All Rights Reserved.
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- footer end -->
+
+    <!-- Music Player -->
+    <div
+      id="bg-music-player"
+      style="
+        position: fixed;
+        bottom: 24px;
+        left: 24px;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      "
+    >
+      <button
+        id="music-toggle"
+        aria-label="Play/Pause Music"
+        style="
+          background: #037aad;
+          border: none;
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+          cursor: pointer;
+        "
+      >
+        <span id="music-icon" style="font-size: 1.3rem">&#9654;</span>
+      </button>
+      <audio
+        id="bg-music"
+        src="img/music/3_03 PM.mp3"
+        loop
+        preload="auto"
+      ></audio>
+    </div>
+
+    <!-- Music player script -->
+    <script src="js/music-player.js"></script>
+  </body>
+</html>

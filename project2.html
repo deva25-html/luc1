@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Explore Emperion</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      .explore {
+        position: relative;
+        padding: 6rem 0 2rem 0;
+        min-height: 100vh;
+        overflow: hidden;
+        /* Sama seperti hero index.html */
+        background-image: linear-gradient(
+            120deg,
+            rgba(32, 161, 248, 0.25) 0%,
+            rgba(91, 130, 182, 0.25) 100%
+          ),
+          url("https://source.unsplash.com/random/1920x1080/?community,people,teamwork");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+      }
+      .explore .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        position: relative;
+        z-index: 2;
+      }
+      /* Parallax/Deco background persis index.html */
+      .parallax-deco {
+        position: absolute;
+        z-index: 1;
+        pointer-events: none;
+        opacity: 0.25;
+        border-radius: 50%;
+        filter: blur(2px);
+        transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      }
+      .parallax-deco-1 {
+        width: 180px;
+        height: 180px;
+        background: radial-gradient(
+          circle at 30% 30%,
+          #20a1f8 0%,
+          transparent 80%
+        );
+        top: 10%;
+        left: 5%;
+      }
+      .parallax-deco-2 {
+        width: 120px;
+        height: 120px;
+        background: radial-gradient(
+          circle at 70% 70%,
+          #5b82b6 0%,
+          transparent 80%
+        );
+        bottom: 12%;
+        right: 8%;
+      }
+      @media (max-width: 600px) {
+        .parallax-deco-1 {
+          width: 90px;
+          height: 90px;
+          left: -20px;
+        }
+        .parallax-deco-2 {
+          width: 60px;
+          height: 60px;
+          right: -10px;
+        }
+      }
+      /* End parallax background */
+
+      .explore-gallery h3,
+      .explore-stories h3,
+      .explore-resources h3 {
+        display: flex;
+        align-items: flex-start;
+        gap: 2rem;
+        background: var(--glass-bg, rgba(97, 144, 225, 0.45));
+        border-radius: 1rem;
+        box-shadow: 0 4px 24px rgba(97, 144, 225, 0.45);
+        margin: 2rem 0;
+        padding: 2rem;
+        backdrop-filter: blur(6px);
+      }
+      .gallery-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.2rem;
+        margin-bottom: 2rem;
+      }
+      .project-card {
+        background: #fff;
+        border-radius: 1rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+        overflow: hidden;
+        transition: transform 0.18s, box-shadow 0.18s;
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        position: relative;
+        z-index: 2;
+      }
+      .project-card:hover {
+        transform: translateY(-6px) scale(1.03);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.13);
+      }
+      .project-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        display: block;
+      }
+      .project-title {
+        padding: 1rem 1rem 1.2rem 1rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-align: center;
+        background: #fff;
+        color: #222;
+      }
+      .project-intro {
+        background: var(--glass-bg, rgba(30, 42, 62, 0.45));
+        border-radius: 1rem;
+        padding: 2rem;
+        backdrop-filter: blur(6px);
+        margin-bottom: 3rem;
+      }
+      .project-image {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto 2rem;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+      }
+      .project-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.4s ease;
+      }
+      .project-image img:hover {
+        transform: scale(1.03);
+      }
+      .project-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .project-heading {
+        color: var(--primary, #fff);
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+      .project-description {
+        color: var(--primary, #fff);
+        line-height: 1.8;
+      }
+      .project-section {
+        margin-bottom: 2rem;
+      }
+      .project-section-title {
+        color: #5b82b6;
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+        border-bottom: 2px solid rgba(91, 130, 182, 0.3);
+        padding-bottom: 0.5rem;
+      }
+      .project-list {
+        list-style: none;
+        padding-left: 1.5rem;
+      }
+      .project-list li {
+        position: relative;
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+      }
+      .project-list li::before {
+        content: "✦";
+        position: absolute;
+        left: 0;
+        color: #5b82b6;
+      }
+      .project-links {
+        background: rgba(91, 130, 182, 0.2);
+        border-radius: 0.5rem;
+        padding: 1.5rem;
+        margin-top: 2rem;
+      }
+      .project-links a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+      .project-links a:hover {
+        color: #5b82b6;
+      }
+      .explore-stories {
+        display: flex;
+        gap: 1.2rem;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+      }
+      .explore-stories blockquote {
+        flex: 1 1 220px;
+        background: #fffbe7;
+        border-left: 4px solid #0c1335;
+        border-radius: 0.7rem;
+        padding: 1rem 1.2rem;
+        font-style: italic;
+        margin: 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        color: #444;
+      }
+      .explore-stories span {
+        display: block;
+        margin-top: 0.5rem;
+        font-size: 0.95rem;
+        color: #888;
+        font-style: normal;
+      }
+      .explore-resources {
+        margin-bottom: 2rem;
+      }
+      .resource-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.2rem;
+      }
+      .resource-card {
+        display: flex;
+        align-items: center;
+        background: #fff;
+        border-radius: 0.7rem;
+        padding: 1rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+        text-decoration: none;
+        color: inherit;
+        transition: transform 0.18s, box-shadow 0.18s;
+      }
+      .resource-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      }
+      .resource-icon {
+        font-size: 2rem;
+        margin-right: 1rem;
+      }
+      .resource-title {
+        font-weight: 500;
+        color: #222;
+      }
+      .resource-desc {
+        font-size: 0.9rem;
+        color: #666;
+      }
+      .explore-resources ul {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 2rem 0;
+      }
+      .explore-resources li {
+        margin-bottom: 0.7rem;
+      }
+      .explore-resources a {
+        color: #222;
+        text-decoration: underline;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      .explore-resources a:hover {
+        color: #222;
+      }
+      .btn-shop {
+        display: inline-block;
+        padding: 0.75rem 2rem;
+        border-radius: 2rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-align: center;
+        cursor: pointer;
+        background: #ffd700;
+        color: #222;
+        border: none;
+        outline: none;
+        text-decoration: none;
+        transition: background 0.2s, color 0.2s;
+        margin-top: 1.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+      }
+      .btn-shop:hover {
+        background: #ffe066;
+        color: #111;
+      }
+      @media (max-width: 600px) {
+        .gallery-row {
+          grid-template-columns: 1fr;
+        }
+        .explore-stories {
+          flex-direction: column;
+        }
+        .resource-list {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="index.html" class="navbar-logo"
+        >Emperion<span>Community</span>.</a
+      >
+      <div class="navbar-nav">
+        <a href="index.html#home">Home</a>
+        <a href="wiki.html">Wiki</a>
+        <a href="index.html#about">Tentang Kami</a>
+        <a href="index.html#event">Kegiatan</a>
+        <a href="index.html#contact">Kontak</a>
+      </div>
+    </nav>
+    <section class="explore">
+      <!-- Parallax Decorative Elements persis index.html -->
+      <div class="parallax-deco parallax-deco-1"></div>
+      <div class="parallax-deco parallax-deco-2"></div>
+      <div class="container">
+        <h2 class="section-title"><span>Explore</span> Emperion</h2>
+        <div class="gallery-row">
+          <div class="project-intro">
+            <div class="project-image">
+              <img src="img/project/project 2.jpg" alt="Project 2" />
+            </div>
+
+            <div class="project-content">
+              <h1 class="project-heading">Ashes of Asgardian</h1>
+
+              <div class="project-section">
+                <h2 class="project-section-title">
+                  🎨 Tentang Project Komik Digital Emperion
+                </h2>
+                <p class="project-description">
+                  Setelah menghadirkan novel fantasi digital Ashes of Asgardian,
+                  kini lahir project kreatif berikutnya: Komik Digital. Komik
+                  ini masih dalam tahap awal pengembangan, namun menjadi bagian
+                  penting dari perluasan dunia Emperion Universe. Berbeda dengan
+                  novel yang fokus pada narasi panjang, komik digital ini akan
+                  menyajikan cerita dengan visual penuh warna, karakter yang
+                  hidup, serta adegan-adegan epik yang mudah dinikmati pembaca.
+                </p>
+              </div>
+
+              <div class="project-section">
+                <h2 class="project-section-title">
+                  ✨ Apa yang Akan Dibawa Komik Ini?
+                </h2>
+                <ul class="project-list">
+                  <li>
+                    Visualisasi karakter: menghadirkan desain unik dari
+                    tokoh-tokoh dunia Asgardian, dengan gaya ilustrasi yang
+                    lebih ekspresif.
+                  </li>
+                  <li>
+                    Cerita ringan tapi mendalam: meski belum dibuat penuh,
+                    rencananya komik akan berisi kisah tambahan, spin-off, atau
+                    momen harian dari para karakter yang mungkin tidak sempat
+                    diceritakan dalam novel.
+                  </li>
+                  <li>
+                    Akses digital: bisa dibaca langsung secara online lewat
+                    website, sehingga lebih interaktif dan mudah dijangkau
+                    pembaca.
+                  </li>
+                </ul>
+              </div>
+
+              <div class="project-section">
+                <h2 class="project-section-title">📖 Status Project</h2>
+                <p class="project-description">
+                  Saat ini, project komik masih dalam tahap konsep & desain
+                  karakter. Beberapa ilustrasi awal sudah dibuat (seperti yang
+                  ada pada poster Emperion), namun cerita komiknya sendiri masih
+                  dalam perencanaan. Targetnya, komik ini akan berjalan seiring
+                  dengan novel, sebagai karya pendamping yang memperkaya
+                  Emperion Universe.
+                </p>
+              </div>
+
+              <div class="project-links">
+                <h2 class="project-section-title">
+                  🌐 Bergabung dengan Komunitas
+                </h2>
+                <ul class="project-list">
+                  <li>
+                    <a href="https://emperionweb.vercel.app"
+                      >Website: emperionweb.vercel.app</a
+                    >
+                  </li>
+                  <li>
+                    <a href="https://discord.gg/SqF2eqQS3Q"
+                      >Discord: discord.gg/SqF2eqQS3Q</a
+                    >
+                  </li>
+                  <li>
+                    <a href="https://youtube.com/@EmperionKingdom"
+                      >Youtube: @EmperionKingdom</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="explore-gallery">
+          <h3>Projects Kita</h3>
+          <div class="gallery-row">
+            <a href="project1.html" class="project-card" target="_blank">
+              <img src="img/project/project 1.png" alt="Project 1" />
+              <div class="project-title">Project 1: Novel Digital</div>
+            </a>
+            <a href="project3.html" class="project-card" target="_blank">
+              <img src="img/project/project 3.png" alt="Project 3" />
+              <div class="project-title">Project 3: Minecraft Server</div>
+            </a>
+          </div>
+        </div>
+        <div class="explore-stories">
+          <h3>Cerita Anggota</h3>
+          <blockquote>
+            "Gabung Emperion bikin aku lebih pede nunjukkin karya desainku!"
+            <span>- Lyra, Anggota</span>
+          </blockquote>
+          <blockquote>
+            "Komunitas-nya seru, dapet teman baru dan ilmu baru!"
+            <span>- Hera, Anggota</span>
+          </blockquote>
+        </div>
+        <div class="explore-resources">
+          <h3>Resource Komunitas</h3>
+          <div class="resource-list">
+            <a href="wiki.html" class="resource-card" target="_blank">
+              <span class="resource-icon">📚</span>
+              <div>
+                <div class="resource-title">Wiki Emperion</div>
+                <div class="resource-desc">
+                  ilmu pengetahuan seputar komunitas & dunia
+                </div>
+              </div>
+            </a>
+            <a
+              href="https://discord.gg/SqF2eqQS3Q"
+              class="resource-card"
+              target="_blank"
+            >
+              <span class="resource-icon">💬</span>
+              <div>
+                <div class="resource-title">Discord</div>
+                <div class="resource-desc">Tempat Ngobrol & Kolaborasi</div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <a href="https://lynk.id/deluci" class="btn-shop" target="_blank"
+          >Shop Digital Market</a
+        >
+      </div>
+    </section>
+    <footer>
+      <div class="container">
+        &copy; 2023 Emperion Community. All Rights Reserved.
+      </div>
+    </footer>
+    <!-- Music Player -->
+    <div
+      id="bg-music-player"
+      style="
+        position: fixed;
+        bottom: 24px;
+        left: 24px;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      "
+    >
+      <button
+        id="music-toggle"
+        aria-label="Play/Pause Music"
+        style="
+          background: #037aad;
+          border: none;
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+          cursor: pointer;
+        "
+      >
+        <span id="music-icon" style="font-size: 1.3rem">&#9654;</span>
+      </button>
+      <audio
+        id="bg-music"
+        src="img/music/music background 3.mp3"
+        loop
+        preload="auto"
+      ></audio>
+    </div>
+    <!-- Music player script -->
+    <script src="js/music-player.js"></script>
+    <script>
+      // Mouse parallax khusus explore
+      document
+        .querySelector(".explore")
+        .addEventListener("mousemove", function (e) {
+          const deco1 = document.querySelector(".parallax-deco-1");
+          const deco2 = document.querySelector(".parallax-deco-2");
+          const rect = this.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+          if (deco1 && deco2) {
+            deco1.style.transform = `translate(${x * 40}px, ${
+              y * 40
+            }px) scale(1.05)`;
+            deco2.style.transform = `translate(${-x * 30}px, ${
+              -y * 30
+            }px) scale(1.05)`;
+          }
+        });
+      // Reset parallax saat mouse keluar
+      document
+        .querySelector(".explore")
+        .addEventListener("mouseleave", function () {
+          const deco1 = document.querySelector(".parallax-deco-1");
+          const deco2 = document.querySelector(".parallax-deco-2");
+          if (deco1 && deco2) {
+            deco1.style.transform = "";
+            deco2.style.transform = "";
+          }
+        });
+    </script>
+  </body>
+</html>
