@@ -1,7 +1,7 @@
 // Initialize EmailJS
 (function () {
   emailjs.init({
-    publicKey: "Hz5oq-2HUC1NxII_B", // Ganti dengan EmailJS Public Key Anda
+    publicKey: "Hz5oq-2HUC1NxII_B",
   });
 })();
 
@@ -22,15 +22,32 @@ AOS.init({
 
 // Toggle class active for mobile menu
 const navbarNav = document.querySelector(".navbar-nav");
-document.querySelector("#menu").onclick = (e) => {
+const menuBtn = document.querySelector("#menu");
+const menuIcon = menuBtn.querySelector("i");
+
+menuBtn.onclick = (e) => {
   e.preventDefault();
   navbarNav.classList.toggle("active");
+  menuBtn.classList.toggle("active");
+  // Ganti ikon menu/hamburger jadi x dan sebaliknya
+  if (menuBtn.classList.contains("active")) {
+    menuIcon.setAttribute("data-feather", "x");
+  } else {
+    menuIcon.setAttribute("data-feather", "menu");
+  }
+  feather.replace();
 };
 
-// Close mobile menu when clicking outside
 document.addEventListener("click", function (e) {
-  if (!navbarNav.contains(e.target) && e.target.id !== "menu") {
+  if (
+    !navbarNav.contains(e.target) &&
+    e.target.id !== "menu" &&
+    !menuBtn.contains(e.target)
+  ) {
     navbarNav.classList.remove("active");
+    menuBtn.classList.remove("active");
+    menuIcon.setAttribute("data-feather", "menu");
+    feather.replace();
   }
 });
 
@@ -192,17 +209,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Send email using EmailJS
       emailjs
-        .send(
-          "service_motgu2w", // Ganti dengan Service ID Anda
-          "template_6dn7z17", // Ganti dengan Template ID Anda
-          {
-            from_name: formData.name,
-            from_email: formData.email,
-            subject: formData.subject,
-            message: formData.message,
-            to_name: "Emperion Community",
-          }
-        )
+        .send("service_motgu2w", "template_6dn7z17", {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_name: "Emperion Community",
+        })
         .then(function (response) {
           console.log("Email sent successfully:", response);
           showAlert("success");
