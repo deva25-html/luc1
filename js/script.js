@@ -262,3 +262,28 @@ window.addEventListener("mousemove", function (e) {
     deco2.style.transform = `translate(${-x}px, ${-y}px) scale(1.05)`;
   }
 });
+
+function setupShopOrderButtons() {
+  const orderButtons = document.querySelectorAll(".order-btn");
+  const subjectInput = document.getElementById("subject");
+  const selectedServiceInput = document.getElementById("selectedService");
+  const contactSection = document.getElementById("contact");
+
+  orderButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const service = this.dataset.service || "Layanan Pesanan";
+      if (subjectInput) {
+        subjectInput.value = `Pesan: ${service}`;
+      }
+      if (selectedServiceInput) {
+        selectedServiceInput.value = service;
+      }
+      if (contactSection) {
+        const targetPosition = contactSection.offsetTop - 70;
+        window.scrollTo({ top: targetPosition, behavior: "smooth" });
+      }
+    });
+  });
+}
+
+document.addEventListener("DOMContentLoaded", setupShopOrderButtons);
